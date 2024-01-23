@@ -12,7 +12,7 @@ public class Wave : MonoBehaviour
     {
         origin = transform.position;
     }
-
+    
     void Update()
     {
         time += Time.deltaTime * rate;

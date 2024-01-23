@@ -8,12 +8,12 @@ public class VoidEventListener : MonoBehaviour
 	public UnityEvent listener;
 	private void OnEnable()
 	{
-		_event?.Subscribe(Respond);
+		//_event?.Subscribe(Respond);
 	}
 
 	private void OnDisable()
 	{
-		_event?.UnSubscribe(Respond);
+		//_event?.UnSubscribe(Respond);
 	}
 
 	private void Respond()

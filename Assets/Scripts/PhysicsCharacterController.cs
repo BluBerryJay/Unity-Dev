@@ -36,6 +36,7 @@ public class PhysicsCharacterController : MonoBehaviour
 		if (Input.GetButtonDown("Jump") && checkGround())
 		{
 			rb.AddForce(Vector3.up * maxJump, ForceMode.Impulse);
+			
 		}
 
 	}
