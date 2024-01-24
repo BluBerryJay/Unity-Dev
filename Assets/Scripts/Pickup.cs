@@ -7,13 +7,14 @@ public class Pickup : MonoBehaviour
 	[SerializeField][Range(1f, 5f)] float speed = 1f;
 	public AudioSource audioSource = null;
 	Vector3 liftPos = Vector3.zero;
-	// Start is called before the first frame update
+
 	private void Start()
 	{
 		if (audioSource == null)
 		{
 			audioSource = GetComponent<AudioSource>();
 		}
+
 
 		// Ensure that the audio clip is assigned to the AudioSource
 		if (audioSource.clip == null)
@@ -27,9 +28,18 @@ public class Pickup : MonoBehaviour
 		float step = speed * Time.deltaTime;
 		if (other.gameObject.CompareTag("Player"))
 		{
+			if (gameObject.CompareTag("Clock"))
+			{
+				GameManager.instance.Timer += 5;
+
+			}
+			else if (gameObject.CompareTag("Coin"))
+			{
+				GameManager.instance.Points += 10;
+
+			}
 			transform.position = Vector3.MoveTowards(transform.position, liftPos, step);
 			audioSource.PlayOneShot(audioSource.clip);
-
 			Invoke("DestroyGameObject", audioSource.clip.length);
 		}
 		print(other.gameObject.name);
@@ -37,6 +47,7 @@ public class Pickup : MonoBehaviour
 	}
 	void DestroyGameObject()
 	{
+
 		gameObject.SetActive(false);
 	}
 

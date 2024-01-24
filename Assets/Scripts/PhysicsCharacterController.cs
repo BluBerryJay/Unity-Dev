@@ -63,7 +63,7 @@ public class PhysicsCharacterController : MonoBehaviour
 	}
 	private void StopMovement()
 	{
-		rb.angularVelocity = new Vector3(0, -4, 0);
+		rb.angularVelocity = Vector3.zero;
 		rb.velocity = new Vector3(0, -4, 0);
 	}
 	private void FixedUpdate()

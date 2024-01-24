@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
+	public static GameManager instance;
 	// UI CANVAS VARIABLES
 	[SerializeField] GameObject titleUI;
 	[SerializeField] GameObject hudUI;
@@ -38,6 +39,17 @@ public class GameManager : Singleton<GameManager>
 	{
 		get { return timer; }
 		set { timer = value; timerUI.text = "Timer: " + $"{Mathf.Floor(timer)}s"; }
+	}
+	private void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
 	private void OnEnable()
 	{
@@ -134,6 +146,10 @@ public class GameManager : Singleton<GameManager>
 	{
 		Points += points;
 		print(points);
+	}
+	public void OnQuitButton()
+	{
+		Application.Quit();
 	}
 	//[SerializeField] Slider healthUI;
 	//[SerializeField] TMP_Text livesUI;

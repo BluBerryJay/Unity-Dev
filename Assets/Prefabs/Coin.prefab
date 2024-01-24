@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ce20a085be1b914589798668a91d89c, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ce20a085be1b914589798668a91d89c, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8164078558771037576, guid: 8ce20a085be1b914589798668a91d89c, type: 3}
@@ -141,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135ed4edbb86164b92428d8bafb0a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
   audioSource: {fileID: 9017721331657613780}
 --- !u!135 &3428897053457986938
 SphereCollider:
@@ -270,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 1939600682399660, guid: 937e9c32396257a4a9ab472491ad7601, type: 3}
       propertyPath: m_Name
       value: SM_Icon_Coin_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1939600682399660, guid: 937e9c32396257a4a9ab472491ad7601, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4250044268879966, guid: 937e9c32396257a4a9ab472491ad7601, type: 3}
       propertyPath: m_LocalPosition.x
