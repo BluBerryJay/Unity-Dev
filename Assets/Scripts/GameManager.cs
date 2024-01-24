@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
 	[SerializeField] GameObject titleUI;
+	[SerializeField] GameObject hudUI;
 	[SerializeField] TMP_Text livesUI;
 	[SerializeField] TMP_Text timerUI;
 	[SerializeField] Slider healthUI;
@@ -53,7 +54,7 @@ public class GameManager : Singleton<GameManager>
 		switch (state)
 		{
 			case State.TITLE:
-
+				OnTitleScreen();
 				break;
 			case State.MAIN_SETUP:
 
@@ -72,12 +73,14 @@ public class GameManager : Singleton<GameManager>
 	public void OnTitleScreen()
 	{
 		titleUI.SetActive(true);
+		hudUI.SetActive(false);
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 	}
 	public void OnStartGame()
 	{
 		titleUI.SetActive(false);
+		hudUI.SetActive(true);
 		timer = 60;
 		Lives = 3;
 		state = State.MAIN_GAME;

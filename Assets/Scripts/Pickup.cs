@@ -3,23 +3,22 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
 	[SerializeField] GameObject pickupPrefab = null;
-	// Start is called before the first frame update
+	[SerializeField] AudioSource audioSource = null;
 
+	// Start is called before the first frame update
+	private void Start()
+	{
+		audioSource = GetComponent<AudioSource>();
+		pickupPrefab = GetComponent<GameObject>();
+	}
 	private void OnCollisionEnter(Collision collision)
 	{
+		if (pickupPrefab.gameObject.tag == "Player" && audioSource.clip != null)
+		{
+			audioSource.Play();
+			Destroy(gameObject);
+		}
 		print(collision.gameObject.name);
 	}
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.TryGetComponent(out Player player))
-		{
-			//var player = other.gameObject.GetComponent<Player>();
-			player.AddPoints(10);
-		}
 
-
-		print(other.gameObject.name);
-		Instantiate(pickupPrefab, transform.position, Quaternion.identity);
-		Destroy(gameObject);
-	}
 }
