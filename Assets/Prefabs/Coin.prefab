@@ -90,7 +90,7 @@ PrefabInstance:
       addedObject: {fileID: 3428897053457986938}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ce20a085be1b914589798668a91d89c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8522288401124168903}
+      addedObject: {fileID: 9017721331657613780}
   m_SourcePrefab: {fileID: 100100000, guid: 8ce20a085be1b914589798668a91d89c, type: 3}
 --- !u!4 &3885600077197092797 stripped
 Transform:
@@ -141,8 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135ed4edbb86164b92428d8bafb0a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPrefab: {fileID: 0}
-  audioSource: {fileID: 8522288401124168903}
+  audioSource: {fileID: 9017721331657613780}
 --- !u!135 &3428897053457986938
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -158,13 +157,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.43
   m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &8522288401124168903
+--- !u!82 &9017721331657613780
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +174,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7fee4a21f069d1846a5b346db30f636d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -184,7 +183,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.43475655
+  MinDistance: 1.9869549
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -220,7 +219,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
