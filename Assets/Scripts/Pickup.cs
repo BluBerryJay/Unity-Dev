@@ -6,7 +6,9 @@ public class Pickup : MonoBehaviour
 
 	[SerializeField][Range(1f, 5f)] float speed = 1f;
 	public AudioSource audioSource = null;
+
 	Vector3 liftPos = Vector3.zero;
+
 
 	private void Start()
 	{
@@ -31,16 +33,18 @@ public class Pickup : MonoBehaviour
 			if (gameObject.CompareTag("Clock"))
 			{
 				GameManager.instance.Timer += 5;
+				AudioManager.instance.PlayAudio(audioSource);
 
 			}
 			else if (gameObject.CompareTag("Coin"))
 			{
 				GameManager.instance.Points += 10;
+				AudioManager.instance.PlayAudio(audioSource);
 
 			}
 			transform.position = Vector3.MoveTowards(transform.position, liftPos, step);
-			audioSource.PlayOneShot(audioSource.clip);
-			Invoke("DestroyGameObject", audioSource.clip.length);
+
+			DestroyGameObject();
 		}
 		print(other.gameObject.name);
 

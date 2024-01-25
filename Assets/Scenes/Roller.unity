@@ -8849,6 +8849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 932709990}
+  audioSource: {fileID: 2137530639}
 --- !u!4 &2137530641
 Transform:
   m_ObjectHideFlags: 0
