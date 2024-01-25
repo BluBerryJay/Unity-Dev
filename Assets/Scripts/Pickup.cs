@@ -1,48 +1,42 @@
+using System;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
 
 
-	[SerializeField][Range(1f, 5f)] float speed = 1f;
-	public AudioSource audioSource = null;
+	//[SerializeField][Range(1f, 5f)] float speed = 1f;
+	public static Pickup instance;
+	//Vector3 liftPos = Vector3.zero;
 
-	Vector3 liftPos = Vector3.zero;
-
-
+	[NonSerialized] public Vector3 origin = Vector3.zero;
+	
 	private void Start()
 	{
-		if (audioSource == null)
-		{
-			audioSource = GetComponent<AudioSource>();
-		}
-
-
-		// Ensure that the audio clip is assigned to the AudioSource
-		if (audioSource.clip == null)
-		{
-			Debug.LogError("Audio clip is not assigned to the AudioSource.");
-		}
+		origin = transform.position;
+		
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		liftPos = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
-		float step = speed * Time.deltaTime;
+		//liftPos = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
+		//float step = speed * Time.deltaTime;
 		if (other.gameObject.CompareTag("Player"))
 		{
 			if (gameObject.CompareTag("Clock"))
 			{
 				GameManager.instance.Timer += 5;
-				AudioManager.instance.PlayAudio(audioSource);
+				AudioManager.instance.PlayClock();
+                ParticleManager.instance.PlayAtPos(origin);
 
-			}
+            }
 			else if (gameObject.CompareTag("Coin"))
 			{
 				GameManager.instance.Points += 10;
-				AudioManager.instance.PlayAudio(audioSource);
+				AudioManager.instance.PlayCoin();
+				ParticleManager.instance.PlayAtPos(origin);
 
-			}
-			transform.position = Vector3.MoveTowards(transform.position, liftPos, step);
+            }
+			//transform.position = Vector3.MoveTowards(transform.position, liftPos, step);
 
 			DestroyGameObject();
 		}
