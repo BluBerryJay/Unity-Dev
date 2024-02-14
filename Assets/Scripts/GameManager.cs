@@ -3,8 +3,8 @@ using TMPro;
 using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
-    #region SERIALIZED_FIELDS
-    public static GameManager instance;
+	#region SERIALIZED_FIELDS
+	public static GameManager instance;
 	// UI CANVAS VARIABLES
 	[SerializeField] GameObject titleUI;
 	[SerializeField] GameObject hudUI;
@@ -20,9 +20,9 @@ public class GameManager : Singleton<GameManager>
 	[Header("Events")]
 	[SerializeField] IntEvent scoreEvent;
 	[SerializeField] VoidEvent gameStartState;
-    #endregion
-    #region VARIALBES
-    public enum State
+	#endregion
+	#region VARIALBES
+	public enum State
 	{
 		TITLE,
 		TUTORIAL,
@@ -44,9 +44,9 @@ public class GameManager : Singleton<GameManager>
 		get { return timer; }
 		set { timer = value; timerUI.text = "Timer: " + $"{Mathf.Floor(timer)}s"; }
 	}
-    #endregion
-    #region EVENT_METHODS
-    private void OnEnable()
+	#endregion
+	#region EVENT_METHODS
+	private void OnEnable()
 	{
 		scoreEvent.Subscribe(OnAddPoints);
 	}
@@ -58,9 +58,9 @@ public class GameManager : Singleton<GameManager>
 	{
 		scoreEvent.Subscribe(OnAddPoints);
 	}
-    #endregion
+	#endregion
 
-    private void Awake()
+	private void Awake()
 	{
 		if (instance == null)
 		{
@@ -71,10 +71,10 @@ public class GameManager : Singleton<GameManager>
 			Destroy(gameObject);
 		}
 	}
-    void Update()
+	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Alpha3)) Timer = 4;
-		
+
 		switch (state)
 		{
 			case State.TITLE:
@@ -98,15 +98,15 @@ public class GameManager : Singleton<GameManager>
 		}
 		//healthUI.value = health.value / 100.0f;
 	}
-    #region ONEVENT_METHODS
-    public void OnTitleScreen()
+	#region ONEVENT_METHODS
+	public void OnTitleScreen()
 	{
 		titleUI.SetActive(true);
 
 		hudUI.SetActive(false);
 		deathUI.SetActive(false);
 		tutorialUI.SetActive(false);
-        victoryUI?.SetActive(false);
+		victoryUI?.SetActive(false);
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 	}
@@ -118,9 +118,9 @@ public class GameManager : Singleton<GameManager>
 		titleUI?.SetActive(false);
 		hudUI?.SetActive(false);
 		deathUI?.SetActive(false);
-        victoryUI?.SetActive(false);
+		victoryUI?.SetActive(false);
 
-    }
+	}
 	public void OnVictory()
 	{
 		victoryUI?.SetActive(true);
@@ -184,16 +184,16 @@ public class GameManager : Singleton<GameManager>
 	{
 		Application.Quit();
 	}
-    #endregion
-    #region SCRAPPED_CODE
-    //[SerializeField] Slider healthUI;
-    //[SerializeField] TMP_Text livesUI;
-    //[SerializeField] FloatVariable health;
-    //public int lives = 0;
-    //public int Lives
-    //{
-    //	get { return lives; }
-    //	set { lives = value; livesUI.text = "Lives: " + lives.ToString(); }
-    //}
-    #endregion
+	#endregion
+	#region SCRAPPED_CODE
+	//[SerializeField] Slider healthUI;
+	//[SerializeField] TMP_Text livesUI;
+	//[SerializeField] FloatVariable health;
+	//public int lives = 0;
+	//public int Lives
+	//{
+	//	get { return lives; }
+	//	set { lives = value; livesUI.text = "Lives: " + lives.ToString(); }
+	//}
+	#endregion
 }

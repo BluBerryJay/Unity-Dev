@@ -8,16 +8,20 @@ public class KinematicController : MonoBehaviour
 
 	void Update()
 	{
-		float distance = transform.localPosition.magnitude;
-		if (distance > maxDistance)
-		{
-			return;
-		}
+		//float distance = transform.localPosition.magnitude;
+		//if (distance > maxDistance)
+		//{
+		//	return;
+		//}
 		Vector3 direction = Vector3.zero;
 		direction.x = Input.GetAxis("Horizontal");
 		direction.y = Input.GetAxis("Vertical");
 		Vector3 force = direction * speed * Time.deltaTime;
 		transform.localPosition += force;
-		transform.localPosition = Vector3.ClampMagnitude(transform.localPosition, maxDistance);
+
+		if (Vector3.Dot(transform.localPosition, force) > 0)
+		{
+			transform.localPosition = Vector3.ClampMagnitude(transform.localPosition, maxDistance);
+		}
 	}
 }
