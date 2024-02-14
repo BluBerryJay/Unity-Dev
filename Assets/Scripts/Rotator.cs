@@ -1,9 +1,11 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
 	[SerializeField]
 	[Range(-360, 360)] float angle = 60;
+	public float speed;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -13,6 +15,6 @@ public class Rotator : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		transform.rotation *= Quaternion.AngleAxis(angle * Time.deltaTime, Vector3.up);
+		transform.rotation *= Quaternion.AngleAxis(angle * Time.deltaTime * speed, Vector3.up);
 	}
 }
